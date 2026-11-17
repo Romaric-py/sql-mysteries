@@ -6,8 +6,8 @@ Ce dépôt est une traduction en français et une adaptation pédagogique du cé
 
 Il est conçu à la fois comme une leçon autonome et interactive pour apprendre les concepts et commandes de base du langage SQL, et comme un jeu d'enquête amusant pour les utilisateurs plus expérimentés.
 
-👉 **[Jouer directement dans le navigateur](https://TON-PSEUDO.github.io/sql-mysteries/)** 👈
-*(Lien direct vers le [guide pas-à-pas pour débutants](https://TON-PSEUDO.github.io/sql-mysteries/walkthrough.html))*
+👉 **[Jouer directement dans le navigateur](https://romaric-py.github.io/sql-mysteries/)** 👈
+*(Lien direct vers le [guide pas-à-pas pour débutants](https://romaric-py.github.io/sql-mysteries/walkthrough.html))*
 
 ---
 

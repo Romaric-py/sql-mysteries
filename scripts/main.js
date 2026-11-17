@@ -186,8 +186,8 @@ class sqlQuiz extends HTMLElement {
       var value = Array.prototype.filter.call(form.input, i => i.checked).map(i => i.value);
       var correct = Array.prototype.filter.call(form.input, i => i.dataset.correct === "true").map(i => i.value);
       var mistakes = setdiff(correct, value).size + setdiff(value, correct).size;
-      var res = mistakes >= 2 ? mistakes + " mistakes" :
-          mistakes == 1 ? mistakes + " mistake" : "All correct!"
+      var res = mistakes >= 2 ? mistakes + " fautes" :
+          mistakes == 1 ? mistakes + " faute" : "Parfait !"
       form.output.innerHTML = `<div class='returnOkay'>${res}</div>`;
     };
 
@@ -251,7 +251,7 @@ class sqlExercise extends HTMLElement {
     editor.setSize('100%', 'auto');
     editor.refresh();
 
-    var runButton = `<input class="sql-exercise-submit" type="submit" value="Run &#x21e9;" disabled>`;
+    var runButton = `<input class="sql-exercise-submit" type="submit" value="Exécuter &#x21e9;" disabled>`;
     inputArea.insertAdjacentHTML("beforeend", runButton);
 
     form['onsubmit'] = (e) => {
@@ -305,7 +305,7 @@ class sqlExercise extends HTMLElement {
       var solutionButton = document.createElement('input');
       solutionButton.name = 'solution';
       solutionButton.type = 'button';
-      solutionButton.value = 'Show Solution';
+      solutionButton.value = 'Montrer la solution';
       solutionButton.onclick = (e) => {
         var existingCode = editor.getValue();
         editor.setValue(existingCode + "\n/* " + solution);
@@ -315,7 +315,7 @@ class sqlExercise extends HTMLElement {
 
     var resetButton = document.createElement('input');
     resetButton.type = 'button';
-    resetButton.value = 'Reset';
+    resetButton.value = 'Réinitialiser';
     resetButton.onclick = (e) => {
       editor.setValue(defaultText);
       outputBox.textContent = '';

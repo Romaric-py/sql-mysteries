@@ -1,51 +1,63 @@
-# SQL Murder Mystery
+# 🕵️‍♂️ SQL Murder Mystery (Version Française)
 
-![Illustration of a detective looking at evidence](174092-clue-illustration.png)
+**Un meurtre a été commis à SQL City !** 
 
-There's been a Murder in SQL City! The SQL Murder Mystery is designed to be both a self-directed lesson to learn SQL concepts and commands and a fun game for experienced SQL users to solve an intriguing crime.
+Ce dépôt est une traduction en français et une adaptation pédagogique du célèbre jeu sérieux [SQL Murder Mystery](https://mystery.knightlab.com/) créé par le Knight Lab de l'Université Northwestern. 
 
-If you just want to solve the mystery, go to [mystery.knightlab.com](https://mystery.knightlab.com). If you're new to SQL, you may want to start at [our walkthrough](https://mystery.knightlab.com/walkthrough.html). It won't teach you everything about SQL, but it should teach you all that you need to solve the mystery.  
+Il est conçu à la fois comme une leçon autonome et interactive pour apprendre les concepts et commandes de base du langage SQL, et comme un jeu d'enquête amusant pour les utilisateurs plus expérimentés.
 
-## What Else is Here?
+👉 **[Jouer directement dans le navigateur](https://TON-PSEUDO.github.io/sql-mysteries/)** 👈
+*(Lien direct vers le [guide pas-à-pas pour débutants](https://TON-PSEUDO.github.io/sql-mysteries/walkthrough.html))*
 
-Before we built the web-based version, we designed this for people to download and solve on their own computer. If you're interested in that, read on.
+---
 
-## What you need to solve on your own computer
+## 🎓 Spécificité de cette adaptation pédagogique
 
-* **sql-murder-mystery.db**: This SQLite database file contains all the data that you will be working with.
-* **prompt**: Depending on your experience level with SQL, find the prompt in either the [prompt_experienced](https://github.com/NUKnightLab/sql-mysteries/blob/master/prompt_experienced.pdf) file or the [prompt_beginner](https://github.com/NUKnightLab/sql-mysteries/blob/master/prompt_beginner.pdf) file.
-* **[reference](https://github.com/NUKnightLab/sql-mysteries/blob/master/reference.pdf)**: This is a crash course on SQL concepts and commands.
-* **a SQLite environment of your choice**: For beginners, we recommend using [SQLiteStudio](https://sqlitestudio.pl/), which is a good graphical interface to use to inspect your data and write queries.
+En plus de la traduction intégrale des consignes et du cours en français, cette version modifie l'approche concernant le croisement de plusieurs tables (chapitre *"Faire des liens"* du guide) :
+* **Suppression de l'opérateur `JOIN`** : Pour correspondre à certaines progressions pédagogiques qui introduisent la jointure par le biais de l'algèbre relationnelle de base, cette version n'utilise pas le mot-clé `JOIN`.
+* **Produit cartésien et restriction** : Le croisement de tables est enseigné via le produit cartésien dans la clause `FROM` (`FROM table1, table2`), filtré par la condition d'égalité entre clé primaire et clé étrangère dans la clause `WHERE` (`WHERE table1.id = table2.table1_id`).
 
-## Getting Started
-* **For SQL beginners**: start with the reference, read the [prompt_beginner](https://github.com/NUKnightLab/sql-mysteries/blob/master/prompt_beginner.pdf) file, then get started by [installing SQLiteStudio and loading the db file](https://github.com/NUKnightLab/sql-mysteries/blob/master/sqlite_studio.pdf). If you get stuck at any point, feel free to refer back to the reference, or file a [GitHub issue](https://github.com/NUKnightLab/sql-mysteries/issues) so we can know where our instructions need to be improved.
+*Note : Bien que l'interface et le cours soient en français, les données à l'intérieur de la base (noms des tables, des colonnes et contenus textuels) restent en anglais.*
 
-* **For experienced SQL users**: read the [prompt_experienced](https://github.com/NUKnightLab/sql-mysteries/blob/master/prompt_experienced.pdf) file, then download the sql-murder-mystery.db file and use a SQL environment of your choice to solve the mystery. You can use the reference to refresh your memory of SQL. Try to complete the activity all within your SQL environment (without writing down notes)!
+---
 
+## 💾 Utiliser la base de données hors-ligne (Fichier SQL)
 
-## Checking the Solution
-Write the following queries in your SQL environment to check whether you've found the right murderer:
+Si vous souhaitez réaliser cet exercice en dehors du navigateur (avec un logiciel comme *DB Browser for SQLite*, *DBeaver*, ou en ligne de commande) :
 
-```SQL
-INSERT INTO solution VALUES (1, "Insert the name of the person you found here");
+1. Le fichier de la base de données SQLite prête à l'emploi se trouve à la racine de ce dépôt : **`sql-murder-mystery.db`**.
+2. Le schéma relationnel (ERD) de la base est disponible dans le fichier image **`schema.png`**.
 
-SELECT value FROM solution;
+---
+
+## 🚀 Tester ou héberger le site en local
+
+Le site fonctionne entièrement côté client grâce à [SQL.js](https://github.com/sql-js/sql.js/) (aucun serveur de base de données n'est requis). Cependant, pour des raisons de sécurité propres aux navigateurs (CORS) lors du chargement du fichier `.db`, vous ne pouvez pas simplement double-cliquer sur `index.html`.
+
+Pour lancer le site sur votre machine :
+
+```bash
+# 1. Cloner ce dépôt
+git clone https://github.com/TON-PSEUDO/sql-mysteries.git
+cd sql-mysteries
+
+# 2. Lancer un petit serveur web local (exemple avec Python 3)
+python3 -m http.server 8000
 ```
 
+Ouvrez ensuite votre navigateur à l'adresse `http://localhost:8000` (ou `http://localhost:8000/walkthrough.html` pour le tutoriel).
 
-## Authors
+---
 
-* [Joon Park](https://twitter.com/JoonParkMusic)
-* [Cathy He](https://twitter.com/Cathy_MeiyingHe)
+## 📜 Crédits et Licences
 
-## Inspiration
-This murder mystery was inspired by [a crime in the neighboring Terminal City](https://github.com/veltman/clmystery "command-line murder mystery").
+* **Traduction française et adaptation pédagogique (sans `JOIN`) :** Réalisées par [Ifèdé Assogba](https://github.com/Romaric-py). Co-édité avec le modèle **gemini-4-argon-high** de Google DeepMind pour la traduction et la reformulation des consignes pédagogiques.
+* **Création originale :** *The SQL Murder Mystery* a été créé par [Joon Park](https://twitter.com/joonparkmusic) et [Cathy He](https://twitter.com/Cathy_MeiyingHe) alors qu'ils étaient boursiers au [Knight Lab de l'Université Northwestern](https://knightlab.northwestern.edu/). Voir le [dépôt GitHub original](https://github.com/NUKnightLab/sql-mysteries).
+* **Adaptation web originale :** [Joe Germuska](https://twitter.com/joegermuska).
+* **Inspiration :** Ce mystère a été inspiré par [un crime dans la ville voisine de Terminal City](https://github.com/veltman/clmystery) (par Noah Veltman).
+* **Composants Web SQL :** Créés et versés dans le domaine public par Zi Chong Kao, créateur de [Select Star SQL](https://selectstarsql.com/).
+* **Illustration :** Détective avec l'aimable autorisation de [Vectors by Vecteezy](https://www.vecteezy.com/).
 
-## Copyright and License
-Original code for this project is released under [the MIT License](https://github.com/NUKnightLab/sql-mysteries/blob/master/LICENSE). 
-
-Original text and other content is released under [Creative Commons CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). 
-
-SQL query custom web components used here were adapted from code created and released to the public domain by Zi Chong Kao, creator of [Select Star SQL](https://selectstarsql.com/).
-
-[Detective image by rambleron](https://www.vecteezy.com/vector-art/174092-clue-illustration) used under Vecteezy's free license.
+### Licences
+* Le **code source** de ce projet est publié sous [Licence MIT](LICENSE).
+* Les **textes et contenus pédagogiques** (ainsi que cette traduction et adaptation) sont publiés sous licence [Creative Commons Attribution - Partage dans les Mêmes Conditions 4.0 International (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/deed.fr).
